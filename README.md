@@ -1,3 +1,20 @@
 # STM32_Project
-An embedded system project develops on STM32 platform and use the MDK5 IDE
-develop some interesting applications based on STM32 Platform.
+
+Description:
+An embedded system project develops on STM32 platform and use the MDK5 IDE.
+Develop some interesting applications based on STM32 Platform.
+
+
+Development Process:
+------------------------------------------------------------------------------------------------------
+Seq  |                              Description                                           |   status  |
+------------------------------------------------------------------------------------------------------
+1.   |                          LED driver implement                                      |    DONE   |
+------------------------------------------------------------------------------------------------------
+2.   |                         buzzer driver implement                                    |    DONE   |
+------------------------------------------------------------------------------------------------------
+3.   |                           SPI Drive implement                                      |    DONE   |
+------------------------------------------------------------------------------------------------------
+4.   |                        Nor flash drive implement                                   |In progress|
+------------------------------------------------------------------------------------------------------
+

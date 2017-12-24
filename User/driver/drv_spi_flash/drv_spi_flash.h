@@ -1,5 +1,7 @@
-#ifndef __DRV_SPI_FLASH
+#ifndef __DRV_SPI_FLASH_H
+#define __DRV_SPI_FLASH_H
 
+#include "stm32f10x.h"
 /**
  *SPI FLASH GPIO PORT definition
  */
@@ -21,7 +23,7 @@
 /**
  *Declare exported functions
 */
-exterm void Drv_SPI_Flash_Init(void);
+extern void Drv_SPI_Flash_Init(void);
 extern void Drv_SPI_Flash_WriteByte(void);
 extern void Drv_SPI_Flash_ReadByre(void);
 

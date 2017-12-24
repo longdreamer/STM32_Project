@@ -26,21 +26,21 @@
 	  /*Config SPI CS Pin*/
 	  GPIO_InitStructure.GPIO_Pin = SPI_FLASH_GPIO_CS_PIN;
 	  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-      GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-      GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);
 	  
 	  /*Config SPI CLK Pin*/
 	  GPIO_InitStructure.GPIO_Pin = SPI_FLASH_GPIO_CLK_PIN;
-      GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-      GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+    GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);
 
 	  /*Config SPI MISO Pin*/	  
-      GPIO_InitStructure.GPIO_Pin = SPI_FLASH_GPIO_MISO_PIN;
-      GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);
+    GPIO_InitStructure.GPIO_Pin = SPI_FLASH_GPIO_MISO_PIN;
+    GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);
 	  
 	  /*Config SPI MOSI Pin*/
 	  GPIO_InitStructure.GPIO_Pin = SPI_FLASH_GPIO_MISO_PIN;
-      GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);  
+    GPIO_Init(SPI_FLASH_GPIO_PORT, &GPIO_InitStructure);  
   }
   
 

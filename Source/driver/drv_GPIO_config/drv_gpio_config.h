@@ -37,9 +37,7 @@ typedef enum
 #endif
 
 /*declare exported functions*/
-extern void Drv_GPIO_Init(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode, TE_BOOLEAN init_value);
-extern void Drv_GPIO_InputInit(GPIO_TypeDef* port, T_U16 pin);
-extern void Drv_GPIO_InputModeInit(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode);
-extern void Drv_GPIO_OutputInit(GPIO_TypeDef* port, T_U16 pin, TE_BOOLEAN init_value);
+extern void Drv_GPIO_InputInit(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode);
+extern void Drv_GPIO_OutputInit(GPIO_TypeDef* port, T_U16 pin,GPIOMode_TypeDef mode,TE_BOOLEAN init_value);
 
 #endif

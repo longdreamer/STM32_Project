@@ -332,7 +332,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\FWlib\inc;..\Libraries\CMSIS;..\User;..\User\driver\drv_led;..\User\driver\drv_buzzer</IncludePath>
+              <IncludePath>..\Libraries\FWlib\inc;..\Libraries\CMSIS;..\Source;..\Source\driver\drv_led;..\Source\driver\drv_buzzer;..\Source\driver\drv_spi;..\Source\driver\drv_flash;..\Source\common;..\Source\driver\drv_GPIO_config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -648,42 +648,47 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>USER</GroupName>
+          <GroupName>Source</GroupName>
           <Files>
+            <File>
+              <FileName>init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\init.c</FilePath>
+            </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\stm32f10x_conf.h</FilePath>
+              <FilePath>..\Source\main.c</FilePath>
             </File>
             <File>
               <FileName>stm32f10x_it.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\stm32f10x_it.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f10x_it.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\stm32f10x_it.h</FilePath>
+              <FilePath>..\Source\stm32f10x_it.c</FilePath>
             </File>
             <File>
               <FileName>drv_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\driver\drv_led\drv_led.c</FilePath>
+              <FilePath>..\Source\driver\drv_led\drv_led.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\drv_flash\drv_flash.c</FilePath>
             </File>
             <File>
               <FileName>drv_buzzer.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\driver\drv_buzzer\drv_buzzer.c</FilePath>
+              <FilePath>..\Source\driver\drv_buzzer\drv_buzzer.c</FilePath>
             </File>
             <File>
-              <FileName>drv_spi_flash.c</FileName>
+              <FileName>drv_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\User\driver\drv_spi_flash\drv_spi_flash.c</FilePath>
+              <FilePath>..\Source\driver\drv_spi\drv_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_gpio_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\drv_GPIO_config\drv_gpio_config.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -36,7 +36,7 @@ const static TS_GPIO_PORT_AND_RCC g_gpio_rcc_map[] =
   * @param  TE_BOOLEAN  : init_valie,when it is output mode, this is the init value of output. other mode it is not use
   * @retval None
   */
-void Drv_GPIO_Init(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode, TE_BOOLEAN init_value)
+static void Drv_GPIO_Init(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode, TE_BOOLEAN init_value)
 {
 		GPIO_InitTypeDef  GPIO_InitStructure;
     T_U32 rcc_periph = 0;
@@ -74,18 +74,6 @@ void Drv_GPIO_Init(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode, TE_BOOL
         }
     }
 }
-
- /**
-  * @brief  GPIO input init
-  * @param  GPIO_TypeDef: port, select which GPIO prot to be initialize
-  * @param  T_U16       : pin,  select which GPIO Pin to be used
-  * @retval None
-  */
-void Drv_GPIO_InputInit(GPIO_TypeDef* port, T_U16 pin)
-{
-		Drv_GPIO_Init(port, pin, GPIO_Mode_IN_FLOATING, E_FALSE);//using floating mode if no special
-}
-
  /**
   * @brief  GPIO input init with mode
   * @param  GPIO_TypeDef: port, select which GPIO prot to be initialize
@@ -93,7 +81,7 @@ void Drv_GPIO_InputInit(GPIO_TypeDef* port, T_U16 pin)
   * @param  GPIOMode_TypeDef : mode,use which input mode
   * @retval None
   */
-void Drv_GPIO_InputModeInit(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode)
+void Drv_GPIO_InputInit(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode)
 {
     Drv_GPIO_Init(port, pin, mode, E_FALSE);
 }
@@ -106,9 +94,9 @@ void Drv_GPIO_InputModeInit(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode
   * @param  TE_BOOLEAN  : init_valie,when it is output mode, this is the init value of output. other mode it is not use
   * @retval None
   */
-void Drv_GPIO_OutputInit(GPIO_TypeDef* port, T_U16 pin, TE_BOOLEAN init_value)
+void Drv_GPIO_OutputInit(GPIO_TypeDef* port, T_U16 pin,GPIOMode_TypeDef mode,TE_BOOLEAN init_value)
 {
-		Drv_GPIO_Init(port, pin, GPIO_Mode_Out_PP, init_value);
+		Drv_GPIO_Init(port, pin, mode, init_value);
 }
 
 /***************************END OF FILE*******************************/

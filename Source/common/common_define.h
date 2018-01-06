@@ -12,8 +12,8 @@
   ******************************************************************************
   */ 
 
-#ifndef __COMMON_DEFINE_H
-#define __COMMON_DEFINE_H
+#ifndef __COMMON_DEFINE_H_
+#define __COMMON_DEFINE_H_
 /*Boolean type define*/
 #ifndef FALSE
 #define FALSE (0)
@@ -30,16 +30,16 @@
 /**@name Typedefs for 8, 16, and 32 bit wide types.
  *@{
  */
-typedef signed char				    	T_S8;
-typedef unsigned char			    	T_U8;
-typedef signed short			    	T_S16;
-typedef unsigned short		    	    T_U16;
-typedef signed long				    	T_S32;
-typedef unsigned long			    	T_U32;
-typedef signed long				    	T_SWord;
-typedef unsigned long			    	T_UWord;
-typedef signed long long int		    T_S64;
-typedef unsigned long long int          T_U64;
+typedef signed char				    		T_S8;
+typedef unsigned char			    		T_U8;
+typedef signed short			    		T_S16;
+typedef unsigned short		    	  T_U16;
+typedef signed long				    		T_S32;
+typedef unsigned long			    		T_U32;
+typedef signed long				    		T_SWord;
+typedef unsigned long			    		T_UWord;
+typedef signed long long int		  T_S64;
+typedef unsigned long long int    T_U64;
 /**@}
  */
 

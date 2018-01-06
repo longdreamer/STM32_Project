@@ -24,7 +24,8 @@ void Drv_SPI_Init(TE_SPI_CHANNEL cha)
 	if(E_SPI_FLASH == cha)
 	{
 		SPI_InitTypeDef  SPI_InitStructure;
-		
+		/*enable clock*/
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
 		/*SPI GPIO config*/
 		Drv_GPIO_OutputInit(SPI_FLASH_PORT,SPI_FLASH_CS_PIN,GPIO_Mode_Out_PP,E_FALSE);//CS_Pin
 		Drv_GPIO_InputInit(SPI_FLASH_PORT,SPI_FLASH_CLK_PIN | SPI_FLASH_MOSI_PIN,GPIO_Mode_AF_PP);//config SPI CLK,MOSI
@@ -36,7 +37,7 @@ void Drv_SPI_Init(TE_SPI_CHANNEL cha)
 		SPI_InitStructure.SPI_CPOL = SPI_CPOL_High;
 		SPI_InitStructure.SPI_CPHA = SPI_CPHA_2Edge;
 		SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-		SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_4;
+		SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;
 		SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
 		SPI_InitStructure.SPI_CRCPolynomial = 7;
 		SPI_Init(SPI_FLASH, &SPI_InitStructure); 
@@ -77,7 +78,7 @@ TE_BOOLEAN Drv_SPI_WriteByte(TE_SPI_CHANNEL cha, T_U8 TxData)
 		}
 		SPI_I2S_SendData(SPI_FLASH, TxData); 
 		retry=0;
-		//wait it finish to fix at release version it cannot work
+
     while (SPI_I2S_GetFlagStatus(SPI_FLASH, SPI_I2S_FLAG_TXE) == RESET) 
 		{
 				retry++;
@@ -89,10 +90,36 @@ TE_BOOLEAN Drv_SPI_WriteByte(TE_SPI_CHANNEL cha, T_U8 TxData)
 	}
 	return E_TRUE;
 }
-
+ /**
+  * @brief  wait spi send data finish
+  * @param  TE_SPI_CHANNEL
+  * @retval TE_BOOLEAN
+  */
 TE_BOOLEAN Drv_SPI_WaitFinish(TE_SPI_CHANNEL cha)
 {
-
+		T_S32 retry=0;
+	  if( E_SPI_FLASH == cha )
+		{
+			while (SPI_I2S_GetFlagStatus(SPI_FLASH, SPI_I2S_FLAG_TXE) == RESET) 
+			{
+				retry++;
+				if(retry>1000)
+				{
+					return E_FALSE;
+				}
+			}		
+      retry = 0;
+      //wait cache is send out
+			while (SPI_I2S_GetFlagStatus(SPI_FLASH, SPI_I2S_FLAG_BSY) == SET)
+			{
+				retry++;
+				if(retry>1000)
+				{
+					return E_FALSE;
+				}
+			}
+	}
+	return E_TRUE;
 }
 
 
@@ -112,15 +139,37 @@ void Drv_SPI_Enable(TE_SPI_CHANNEL cha)
 		SPI_Cmd(SPI_FLASH, ENABLE);
 	}
 }
-
-
-void Drv_SPI_ClearReceiveBuff(TE_SPI_CHANNEL cha)
-{
-
-
-}
-
+ /**
+  * @brief   SPI send / receive data
+  * @param   cha:channel; TxData:data to be send
+  * @retval  read data 
+  */
 T_U8 Drv_SPI_ReadWriteByte(TE_SPI_CHANNEL cha, T_U8 TxData)
 {
-
+		if( E_SPI_FLASH == cha)
+    {
+				T_U8 retry=0;
+				while (SPI_I2S_GetFlagStatus(SPI_FLASH, SPI_I2S_FLAG_TXE) == RESET) 
+				{
+            retry++;
+            if(retry>200)
+            {
+								return 0;
+            }
+				}
+			  //clear cache first
+				SPI_I2S_ReceiveData(SPI_FLASH);
+				SPI_I2S_SendData(SPI_FLASH, TxData); 
+				retry=0;
+        while (SPI_I2S_GetFlagStatus(SPI_FLASH, SPI_I2S_FLAG_RXNE) == RESET) 
+				{
+            retry++;
+            if(retry>200)
+            {
+							return 0;
+            }
+				}
+        return (T_U8)SPI_I2S_ReceiveData(SPI_FLASH);
+    }
+    return 0;
 }

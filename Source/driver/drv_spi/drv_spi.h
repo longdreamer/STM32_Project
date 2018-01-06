@@ -28,8 +28,6 @@ extern TE_BOOLEAN  Drv_SPI_WriteByte(TE_SPI_CHANNEL cha, T_U8 TxData);
 extern TE_BOOLEAN  Drv_SPI_WaitFinish(TE_SPI_CHANNEL cha);
 extern void        Drv_SPI_Disable(TE_SPI_CHANNEL cha);
 extern void        Drv_SPI_Enable(TE_SPI_CHANNEL cha);
-
-extern void        Drv_SPI_ClearReceiveBuff(TE_SPI_CHANNEL cha);
 extern T_U8        Drv_SPI_ReadWriteByte(TE_SPI_CHANNEL cha, T_U8 TxData);
 
 #endif

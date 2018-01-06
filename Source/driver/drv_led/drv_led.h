@@ -35,5 +35,6 @@ typedef enum
 /*led driver exported functions*/
 extern void Drv_LED_GPIO_Init(void);
 extern void Drv_LED_Control(TE_LED_ID led_id,TE_LED_STATE led_state);
+extern void Drv_LED_Toggle(TE_LED_ID led_id);
 
 #endif /* __DRV_LED_H */

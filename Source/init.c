@@ -33,6 +33,7 @@ static void Init_Driver(void)
 {
 	Drv_LED_GPIO_Init();
 	Drv_Buzzer_GPIO_Init();
+	Drv_EXTI_KEY1_Init();
 }
 
 /**

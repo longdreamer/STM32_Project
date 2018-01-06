@@ -12,6 +12,15 @@
 
 #include "stm32f10x.h"
 #include "common_define.h"
+
+/*SPI Flash Config*/
+#define SPI_FLASH               SPI1
+#define SPI_FLASH_PORT          GPIOA 
+#define SPI_FLASH_CS_PIN        GPIO_Pin_4
+#define SPI_FLASH_CLK_PIN       GPIO_Pin_5
+#define SPI_FLASH_MISO_PIN      GPIO_Pin_6
+#define SPI_FLASH_MOSI_PIN      GPIO_Pin_7
+
 /*enum definition*/
 typedef enum 
 {

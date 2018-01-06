@@ -8,13 +8,14 @@
 	***************************************/
   
 #include "drv_led.h"   
-
+#include "drv_gpio_config.h"
 
  /**
   * @brief  LED GPIO initial
   * @param  None
   * @retval None
   */
+#if 0
 void Drv_LED_GPIO_Init(void)
 {		
 		/*定义一个GPIO_InitTypeDef类型的结构体*/
@@ -47,6 +48,21 @@ void Drv_LED_GPIO_Init(void)
 		GPIO_Init(LED3_GPIO_PORT, &GPIO_InitStructure);
 
 		/* 关闭所有led灯	*/
+		GPIO_SetBits(LED1_GPIO_PORT, LED1_GPIO_PIN);
+		
+		/* 关闭所有led灯	*/
+		GPIO_SetBits(LED2_GPIO_PORT, LED2_GPIO_PIN);	 
+    
+    /* 关闭所有led灯	*/
+		GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
+}
+#endif
+void Drv_LED_GPIO_Init(void)
+{
+		Drv_GPIO_OutputInit(LED1_GPIO_PORT,LED1_GPIO_PIN,GPIO_Mode_Out_PP,E_FALSE);
+		Drv_GPIO_OutputInit(LED2_GPIO_PORT,LED2_GPIO_PIN,GPIO_Mode_Out_PP,E_FALSE);
+		Drv_GPIO_OutputInit(LED3_GPIO_PORT,LED3_GPIO_PIN,GPIO_Mode_Out_PP,E_FALSE);
+			/* 关闭所有led灯	*/
 		GPIO_SetBits(LED1_GPIO_PORT, LED1_GPIO_PIN);
 		
 		/* 关闭所有led灯	*/
@@ -202,6 +218,37 @@ void Drv_LED_Control(TE_LED_ID led_id,TE_LED_STATE led_state)
 				break;
 		}
 	}
+}
+/*toggle the led status*/
+#define digitalToggle(p,i) {p->ODR ^=i;}
+#define LED1_TOGGLE		 digitalToggle(LED1_GPIO_PORT,LED1_GPIO_PIN)
+#define LED2_TOGGLE		 digitalToggle(LED2_GPIO_PORT,LED2_GPIO_PIN)
+#define LED3_TOGGLE		 digitalToggle(LED3_GPIO_PORT,LED3_GPIO_PIN)
+ /**
+  * @brief  toggle led status
+  * @param  led_id
+  * @retval NONE
+  */
+void Drv_LED_Toggle(TE_LED_ID led_id)
+{
+		switch(led_id)
+		{
+			case E_LED_1:
+				LED1_TOGGLE;
+				break;
+				
+			case E_LED_2:
+				LED2_TOGGLE;
+				break;
+				
+			case E_LED_3:
+				LED3_TOGGLE;
+				break;		
+			
+			default:
+				break;
+		}
+
 }
 
 /*********************************************END OF FILE**********************/

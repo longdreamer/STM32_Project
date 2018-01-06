@@ -27,17 +27,11 @@ void Delay(__IO u32 nCount);
   * @retval нч
   */
 int main(void)
-{	
-
-	
+{
+	Init_All();
 	while (1)
 	{
-			Drv_LED_Control(E_LED_ALL,E_LED_ON);
-		  Drv_Buzzer_Control(E_BUZZER_ON);
-			SOFT_DELAY;
-			Drv_LED_Control(E_LED_ALL,E_LED_OFF);
-			Drv_Buzzer_Control(E_BUZZER_OFF);
-			SOFT_DELAY;
+
 	}
 }
 

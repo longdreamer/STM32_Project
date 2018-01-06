@@ -26,6 +26,13 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x_it.h"
 
+/*add by user for add interrupt handler*/
+
+#include "drv_led.h"
+#include "drv_exti.h"
+
+/*end of user add*/
+
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -158,5 +165,15 @@ void SysTick_Handler(void)
   * @}
   */ 
 
+void EXTI0_IRQHandler(void)
+{
+	while(EXTI_GetITStatus(KEY1_INT_EXTI_LINE) != RESET) 
+	{
+		Drv_LED_Toggle(E_LED_1);
+		Drv_LED_Toggle(E_LED_2);
+		Drv_LED_Toggle(E_LED_3);
+		EXTI_ClearITPendingBit(KEY1_INT_EXTI_LINE);     
+	}  
+}
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

@@ -332,7 +332,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\FWlib\inc;..\Libraries\CMSIS;..\Source;..\Source\driver\drv_led;..\Source\driver\drv_buzzer;..\Source\driver\drv_spi;..\Source\driver\drv_flash;..\Source\common;..\Source\driver\drv_GPIO_config</IncludePath>
+              <IncludePath>..\Libraries\FWlib\inc;..\Libraries\CMSIS;..\Source;..\Source\driver\drv_led;..\Source\driver\drv_buzzer;..\Source\driver\drv_spi;..\Source\driver\drv_flash;..\Source\common;..\Source\driver\drv_GPIO_config;..\Source\driver\drv_exti;..\Source\driver\drv_systick;..\Source\kernel\kernel_tick_time</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -689,6 +689,26 @@
               <FileName>drv_gpio_config.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Source\driver\drv_GPIO_config\drv_gpio_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\drv_exti\drv_exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\drv_systick\drv_systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>common.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\common\common.c</FilePath>
+            </File>
+            <File>
+              <FileName>kernel_tick_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\kernel\kernel_tick_time\kernel_tick_time.c</FilePath>
             </File>
           </Files>
         </Group>

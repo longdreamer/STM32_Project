@@ -30,7 +30,7 @@
 
 #include "drv_led.h"
 #include "drv_exti.h"
-
+#include "kernel_tick_time.h"
 /*end of user add*/
 
 /** @addtogroup STM32F10x_StdPeriph_Template
@@ -141,8 +141,11 @@ void PendSV_Handler(void)
   * @param  None
   * @retval None
   */
+
+/*implement by user*/
 void SysTick_Handler(void)
 {
+	kernel_tick_time_one_tick();
 }
 
 /******************************************************************************/
@@ -164,7 +167,7 @@ void SysTick_Handler(void)
 /**
   * @}
   */ 
-
+/*implement by user*/
 void EXTI0_IRQHandler(void)
 {
 	while(EXTI_GetITStatus(KEY1_INT_EXTI_LINE) != RESET) 

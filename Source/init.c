@@ -31,6 +31,7 @@ void Init_All(void)
   */
 static void Init_Driver(void)
 {
+	Drv_Systick_Init(MS_PER_TICK);
 	Drv_LED_GPIO_Init();
 	Drv_Buzzer_GPIO_Init();
 	Drv_EXTI_KEY1_Init();

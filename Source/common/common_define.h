@@ -42,6 +42,9 @@ typedef signed long long int		  T_S64;
 typedef unsigned long long int    T_U64;
 /**@}
  */
+ 
+// Character to be used for debug output etc.. NON-Unicode.
+typedef char T_CHAR;
 
 typedef enum{
     E_FALSE,

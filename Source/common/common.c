@@ -68,7 +68,7 @@ void Enter_Critical(void)
   * @param  NONE
   * @retval NONE
   */
-void ExitCritical(void)
+void Exit_Critical(void)
 { 
     __enable_irq();
 }

@@ -9,7 +9,6 @@
   *****************************************************************************
   */
 #include "drv_systick.h"
-
 	
 #define SYSTICK_MS_DIV    (1000)        //1 ms 
 #define SYSTICK_US_DIV    (1000000)     //1 us 

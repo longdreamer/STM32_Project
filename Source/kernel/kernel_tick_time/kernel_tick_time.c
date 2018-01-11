@@ -61,8 +61,8 @@ T_U32 kernel_tick_time_diff( T_U32 new_time_ms, T_U32 old_time_ms)
 }
  /**
   * @brief  get current time,it will recount when it reach MAX_T_U32 millisecond
-  * @param 
-  * @retval 
+  * @param  None
+  * @retval current time
   */
 T_U32 kernel_tick_time_current(void)
 {

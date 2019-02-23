@@ -322,7 +322,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -332,7 +332,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\FWlib\inc;..\Libraries\CMSIS;..\Source;..\Source\driver\drv_led;..\Source\driver\drv_buzzer;..\Source\driver\drv_spi;..\Source\driver\drv_flash;..\Source\common;..\Source\driver\drv_GPIO_config;..\Source\driver\drv_exti;..\Source\driver\drv_systick;..\Source\kernel\kernel_tick_time</IncludePath>
+              <IncludePath>..\Libraries\FWlib\inc;..\Libraries\CMSIS;..\Source;..\Source\driver\drv_led;..\Source\driver\drv_buzzer;..\Source\driver\drv_spi;..\Source\driver\drv_flash;..\Source\common;..\Source\driver\drv_GPIO_config;..\Source\driver\drv_exti;..\Source\driver\drv_systick;..\Source\kernel\kernel_tick_time;..\Source\driver\driver_uart;..\Source\driver\drv_tim;..\Source\app\test_case;..\Source\FreeRTOS\inc;..\Source\FreeRTOS\src</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -349,7 +349,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\Source\FreeRTOS\inc</IncludePath>
             </VariousControls>
           </Aads>
           <LDads>
@@ -710,6 +710,31 @@
               <FileType>1</FileType>
               <FilePath>..\Source\kernel\kernel_tick_time\kernel_tick_time.c</FilePath>
             </File>
+            <File>
+              <FileName>drv_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\driver_uart\drv_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_basic_TIM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\drv_tim\drv_basic_TIM.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_test_case.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\app\test_case\app_test_case.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_advance_TIM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\drv_tim\drv_advance_TIM.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_general_TIM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\driver\drv_tim\drv_general_TIM.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -719,6 +744,56 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\Doc\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FreeRTOS</GroupName>
+          <Files>
+            <File>
+              <FileName>croutine.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\croutine.c</FilePath>
+            </File>
+            <File>
+              <FileName>event_groups.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\event_groups.c</FilePath>
+            </File>
+            <File>
+              <FileName>list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\list.c</FilePath>
+            </File>
+            <File>
+              <FileName>port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\port.c</FilePath>
+            </File>
+            <File>
+              <FileName>queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\queue.c</FilePath>
+            </File>
+            <File>
+              <FileName>stream_buffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\stream_buffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>tasks.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\tasks.c</FilePath>
+            </File>
+            <File>
+              <FileName>timers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\timers.c</FilePath>
+            </File>
+            <File>
+              <FileName>heap_4.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Source\FreeRTOS\src\heap_4.c</FilePath>
             </File>
           </Files>
         </Group>

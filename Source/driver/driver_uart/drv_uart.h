@@ -24,7 +24,7 @@
   */
 	
 //USART1
-#define  USARTx                   USART1
+#define  USARTx                    USART1
 #define  USARTx_CLK                RCC_APB2Periph_USART1
 #define  USARTx_APBxClkCmd         RCC_APB2PeriphClockCmd
 #define  USARTx_BAUDRATE           115200
@@ -115,9 +115,9 @@
 //#define  USARTx_IRQHandler         UART5_IRQHandler
 
 
-extern void Drv_USAR_Init(void);
-extern void Drv_Usart_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
-extern void Drv_Usart_SendString( USART_TypeDef * pUSARTx, char *str);
+extern void Drv_UART_Init(void);
+extern void Drv_UART_SendByte( USART_TypeDef * pUSARTx, uint8_t ch);
+extern void Drv_UART_SendString( USART_TypeDef * pUSARTx, char *str);
 	 
 	 
 #ifdef __cplusplus

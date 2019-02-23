@@ -29,7 +29,7 @@ void assert_failed(uint8_t* file, uint32_t line)
     }
 }
 #endif
-
+static TE_TRACE_STATE g_trace_state = E_TRACE_OFF;
 
 void assertFAILED(const char *file, int line)
 {
@@ -154,9 +154,17 @@ void Delay_Us(T_S32 us)
                 break;
             }
         }
-    }
+    }	
 #endif
 }
+#endif 
 
-#endif
+void SetTraceState(TE_TRACE_STATE trace_state)
+{
+		g_trace_state = trace_state;
+}
 
+TE_TRACE_STATE GetTraceState(void)
+{
+		return g_trace_state;
+}

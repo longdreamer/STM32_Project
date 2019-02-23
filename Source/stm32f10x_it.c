@@ -31,6 +31,11 @@
 #include "drv_led.h"
 #include "drv_exti.h"
 #include "kernel_tick_time.h"
+#include "drv_uart.h"
+#include "drv_basic_tim.h"
+#include "drv_general_TIM.h"
+#include "drv_advance_TIM.h"
+#include "common.h"
 /*end of user add*/
 
 /** @addtogroup STM32F10x_StdPeriph_Template
@@ -80,6 +85,7 @@ void MemManage_Handler(void)
   /* Go to infinite loop when Memory Manage exception occurs */
   while (1)
   {
+		
   }
 }
 
@@ -114,9 +120,9 @@ void UsageFault_Handler(void)
   * @param  None
   * @retval None
   */
-void SVC_Handler(void)
-{
-}
+//void SVC_Handler(void)
+//{
+//}
 
 /**
   * @brief  This function handles Debug Monitor exception.
@@ -132,9 +138,9 @@ void DebugMon_Handler(void)
   * @param  None
   * @retval None
   */
-void PendSV_Handler(void)
-{
-}
+//void PendSV_Handler(void)
+//{
+//}
 
 /**
   * @brief  This function handles SysTick Handler.
@@ -143,10 +149,10 @@ void PendSV_Handler(void)
   */
 
 /*implement by user*/
-void SysTick_Handler(void)
-{
-	kernel_tick_time_one_tick();
-}
+//void SysTick_Handler(void)
+//{
+	//kernel_tick_time_one_tick();
+//}
 
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */
@@ -173,10 +179,91 @@ void EXTI0_IRQHandler(void)
 	while(EXTI_GetITStatus(KEY1_INT_EXTI_LINE) != RESET) 
 	{
 		Drv_LED_Toggle(E_LED_1);
-		Drv_LED_Toggle(E_LED_2);
-		Drv_LED_Toggle(E_LED_3);
+		//USE KEY1 to control trace state
+		if(E_TRACE_OFF == GetTraceState())
+		{
+				SetTraceState(E_TRACE_ON);
+		}
+		else
+		{
+				SetTraceState(E_TRACE_OFF);
+		}
 		EXTI_ClearITPendingBit(KEY1_INT_EXTI_LINE);     
 	}  
+	return;
 }
+
+void USARTx_IRQHandler(void)
+{
+	T_U8 Temp;
+	if (USART_GetITStatus(USARTx,USART_IT_RXNE)!=RESET) 
+	{
+		Temp = USART_ReceiveData(USARTx);
+		USART_SendData(USARTx,Temp);
+	}
+	return;
+}
+
+/**
+  * @brief  This function handles TIM2 interrupt request.
+  * @param  None
+  * @retval None
+  */
+extern volatile uint32_t basic_time;
+void  BASIC_TIM_IRQHandler (void)
+{
+	if ( TIM_GetITStatus( BASIC_TIM, TIM_IT_Update) != RESET ) 
+	{	
+		basic_time++;
+		TIM_ClearITPendingBit(BASIC_TIM , TIM_FLAG_Update);  		 
+	}	
+	return;	
+}
+
+/**
+  * @brief  This function handles TIM2 interrupt request.
+  * @param  None
+  * @retval None
+  */
+extern volatile uint32_t advance_time;
+void  ADVANCE_TIM_UP_IRQHandler (void)
+{
+	if ( TIM_GetITStatus(ADVANCE_TIM, TIM_IT_Update) != RESET ) 
+	{	
+		advance_time++;
+		TIM_ClearITPendingBit(ADVANCE_TIM , TIM_FLAG_Update);  		 
+	}	
+	return;	
+}
+/*
+**Advance timer for CC .
+*/
+__IO uint16_t IC2Value = 0;
+__IO uint16_t IC1Value = 0;
+__IO float    DutyCycle = 0;
+__IO float    Frequency = 0;
+void ADVANCE_TIM_CC_IRQHandler(void)
+{
+  TIM_ClearITPendingBit(ADVANCE_TIM, TIM_IT_CC1);
+  //get input capture value
+  IC1Value = TIM_GetCapture1(ADVANCE_TIM);
+  IC2Value = TIM_GetCapture2(ADVANCE_TIM);
+	
+	if (IC1Value != 0)
+  {
+    DutyCycle = (float)((IC2Value+1) * 100) / (IC1Value+1);
+    Frequency = (72000000/(ADVANCE_TIM_Prescaler + 1))/(float)(IC1Value+1);
+		printf("Pulse:%0.2f%%   Freq:%0.2fHz\n",DutyCycle,Frequency);
+  }
+  else
+  {
+    DutyCycle = 0;
+    Frequency = 0;
+		printf("reset");
+  }
+}
+
+
+
 
 /******************* (C) COPYRIGHT 2011 STMicroelectronics *****END OF FILE****/

@@ -78,7 +78,7 @@ void Drv_UART_Init(void)
   * @param 
   * @retval 
   */
-void Drv_Usart_SendByte(USART_TypeDef * pUSARTx, uint8_t ch)
+void Drv_UART_SendByte(USART_TypeDef * pUSARTx, uint8_t ch)
 {
 	/* Send a byte data to USART */
 	USART_SendData(pUSARTx,ch);
@@ -87,12 +87,12 @@ void Drv_Usart_SendByte(USART_TypeDef * pUSARTx, uint8_t ch)
 	while(USART_GetFlagStatus(pUSARTx, USART_FLAG_TXE) == RESET);	
 }
 
-void Drv_Usart_SendString(USART_TypeDef * pUSARTx, char *str)
+void Drv_UART_SendString(USART_TypeDef * pUSARTx, char *str)
 {
 	unsigned int k=0;
   do 
   {
-      Drv_Usart_SendByte( pUSARTx, *(str + k) );
+      Drv_UART_SendByte( pUSARTx, *(str + k) );
       k++;
   } while(*(str + k)!='\0');
   

@@ -9,6 +9,7 @@
 #define LED1_GPIO_PORT    	GPIOB			              /* GPIO端口 */
 #define LED1_GPIO_CLK 	    RCC_APB2Periph_GPIOB		/* GPIO端口时钟 */
 #define LED1_GPIO_PIN		    GPIO_Pin_0			        /* 连接到SCL时钟线的GPIO */
+
 /*LED2*/
 #define LED2_GPIO_PORT    	GPIOF			              /* GPIO端口 */
 #define LED2_GPIO_CLK 	    RCC_APB2Periph_GPIOF		/* GPIO端口时钟 */

@@ -35,6 +35,13 @@ static void Init_Driver(void)
 	Drv_LED_GPIO_Init();
 	Drv_Buzzer_GPIO_Init();
 	Drv_EXTI_KEY1_Init();
+	Drv_UART_Init();
+	Drv_Basic_TIM_Init();
+	#ifndef ADVANCE_TIM_PWM
+	Drv_Advance_TIM_timer_Init();
+	#endif
+	Drv_Advance_TIM_PWM_Init();
+	Drv_General_TIM_Init();
 }
 
 /**

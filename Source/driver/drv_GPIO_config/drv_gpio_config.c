@@ -38,7 +38,7 @@ const static TS_GPIO_PORT_AND_RCC g_gpio_rcc_map[] =
   */
 static void Drv_GPIO_Init(GPIO_TypeDef* port, T_U16 pin, GPIOMode_TypeDef mode, TE_BOOLEAN init_value)
 {
-		GPIO_InitTypeDef  GPIO_InitStructure;
+	GPIO_InitTypeDef  GPIO_InitStructure;
     T_U32 rcc_periph = 0;
     T_U32 i = 0; 
 

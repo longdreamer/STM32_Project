@@ -15,7 +15,7 @@
   * @param  None
   * @retval None
   */
-#if 0
+#if 1
 void Drv_LED_GPIO_Init(void)
 {		
 		/*定义一个GPIO_InitTypeDef类型的结构体*/
@@ -56,7 +56,7 @@ void Drv_LED_GPIO_Init(void)
     /* 关闭所有led灯	*/
 		GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
 }
-#endif
+#else
 void Drv_LED_GPIO_Init(void)
 {
 		Drv_GPIO_OutputInit(LED1_GPIO_PORT,LED1_GPIO_PIN,GPIO_Mode_Out_PP,E_FALSE);
@@ -71,7 +71,7 @@ void Drv_LED_GPIO_Init(void)
     /* 关闭所有led灯	*/
 		GPIO_SetBits(LED3_GPIO_PORT, LED3_GPIO_PIN);
 }
-
+#endif
 
  /**
   * @brief  turn off led1:set bit to 1 is off,set 0 is on
@@ -248,7 +248,6 @@ void Drv_LED_Toggle(TE_LED_ID led_id)
 			default:
 				break;
 		}
-
 }
 
 /*********************************************END OF FILE**********************/

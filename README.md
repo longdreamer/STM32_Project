@@ -1,25 +1,32 @@
 # STM32_Project
 
-Description:
+## Description:
 An embedded system project develops on STM32 platform and use the MDK5 IDE.
 Develop some interesting applications based on STM32 Platform.
 
 
-Development Process:
-------------------------------------------------------------------------------------------------------
-Seq  |                              Description                                           |   status  |
-------------------------------------------------------------------------------------------------------
-1.   |                          LED driver implement                                      |    DONE   |
-------------------------------------------------------------------------------------------------------
-2.   |                         buzzer driver implement                                    |    DONE   |
-------------------------------------------------------------------------------------------------------
-3.   |                           SPI Driver implement                                     |    DONE   |
-------------------------------------------------------------------------------------------------------
-4.   |                        Nor flash driver implement                                  |In progress|
-------------------------------------------------------------------------------------------------------
-5.   |                        sys tick driver implement                                    |   DONE   |
-------------------------------------------------------------------------------------------------------
-6.   |                          time module implement                                      |   DONE   |
-------------------------------------------------------------------------------------------------------
-7.   |                          common module implement                                    |   DONE   |
-------------------------------------------------------------------------------------------------------
+## To-do list:
+-[x] Done
+  -[x] LED driver
+  -[x] buzzer driver
+  -[x] SPI Driver
+  -[x] SPI Driver
+  -[x] system tick driver
+  -[x] time module
+  -[x] common use module
+
+-[x] In progress
+  -[x] Nor flash driver
+  -[x] UART driver
+  
+-[x] To do
+  -[x] UART communication
+  -[X] Log module
+  -[x] Log manager
+  -[x] TFT driver
+  -[x] LCD driver
+  -[x] SD driver
+  -[x] WIFI driver
+  -[x] uC-GUI
+  -[x] uC-OS
+  
